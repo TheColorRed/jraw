@@ -18,8 +18,19 @@ jraw (Draw with a "j" instead of a "d") is a JavaScript Library that uses the ca
   - ~~Hue~~
   - ~~Saturation~~
   - Grayscale
+  - Invert
   - Threshold
+  - Color Adjustments (RGB)
+  - Shadows
+  - Highlights
+  - Midtones
 - Filters
+- Transform
+  - Rotate
+  - Scale
+  - Skew
+  - Flip Vertical
+  - Flip Horizontal
 - Blending
   - Disolve
   - Darken
