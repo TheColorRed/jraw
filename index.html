@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script src="./jraw/jraw.js"></script>
+        <script src="./jraw/data/adjustments/Brightness.js"></script>
+        <script src="./jraw/data/adjustments/Contrast.js"></script>
+        <script src="./jraw/data/adjustments/Saturation.js"></script>
+        <script src="./jraw/data/adjustments/Hue.js"></script>
+        <style>
+            html, body{
+                font-family: verdana, arial, sans-serif;
+            }
+            #operations{
+                float: left;
+                width: 300px;
+            }
+            #canvas-wrapper{
+                float: left;
+                margin-right: 20px;
+            }
+            input[type=range]{
+                width: 200px;
+            }
+            .title{
+                font-weight: bold;
+                cursor: pointer;
+                margin-bottom: 8px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="canvas-wrapper">
+            <canvas id="canvas"></canvas>
+        </div>
+        <div id="operations">
+            <div>
+                <div class="title">Brightness / Contrast</div>
+                <div>
+                    Brightness<br />
+                    <input type="range" min="-100" max="100" value="0" id="brightness" />
+                    <input type="button" value="Apply" data-id="brightness" disabled="disabled" />
+                    Contrast<br />
+                    <input type="range" min="-100" max="100" value="0" id="contrast" />
+                    <input type="button" value="Apply" data-id="contrast" disabled="disabled" />
+                </div>
+                <div class="title">Hue / Saturation</div>
+                <div>
+                    Hue<br />
+                    <input type="range" min="-100" max="100" value="0" id="hue" />
+                    <input type="button" value="Apply" data-id="hue" disabled="disabled" />
+                    Saturation<br />
+                    <input type="range" min="-100" max="100" value="0" id="saturation" />
+                    <input type="button" value="Apply" data-id="saturation" disabled="disabled" />
+                </div>
+                <div>
+                    <input type="button" value="Cancel" disabled="disabled" />
+                </div>
+            </div>
+        </div>
+        <script>
+            var j = new jraw("canvas");
+            j.setImage("/jraw/images/dog.jpg");
+            j.attachSlider("brightness", new Brightness(j));
+            j.attachSlider("contrast", new Contrast(j));
+            j.attachSlider("saturation", new Saturation(j));
+            j.attachSlider("hue", new Hue(j));
+
+            $("input[type=range]").change(function(){
+                var id = $(this).attr("id");
+                if(parseInt($(this).val()) !== 50){
+                    $("input[type=button][data-id=" + id + "]").removeAttr("disabled");
+                    $("input[type=button][value=Cancel]").removeAttr("disabled");
+                }else{
+                    $("input[type=button][data-id=" + id + "]").attr("disabled", "disabled");
+                    $("input[type=button][value=Cancel]").attr("disabled", "disabled");
+                }
+            });
+            $("input[type=button][value=Apply]").click(function(){
+                j.applyFilter();
+                $("input[type=button]").each(function(){
+                    $(this).attr("disabled", "disabled");
+                });
+                $("input[type=range]").each(function(){
+                    $(this).val("0");
+                });
+            });
+            $("input[type=button][value=Cancel]").click(function(){
+                j.cancelFilter();
+                $("input[type=button]").each(function(){
+                    $(this).attr("disabled", "disabled");
+                });
+                $("input[type=range]").each(function(){
+                    $(this).val("0");
+                });
+            });
+        </script>
+    </body>
+</html>
