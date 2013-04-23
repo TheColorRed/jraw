@@ -12,6 +12,8 @@ jraw (Draw with a "j" instead of a "d") is a JavaScript Library that uses the ca
 
 ##Things To Change (TODO)##
 - Needs to be able to create and adjust layers individually. jraw should be the main class which can initiate a layer class. The layer class will then allow for image manipulation just on that layer.
-- Add more Adjustments
+- Adjustments
+  - Grayscale
+  - Threshold
 - Add filters
 - Add blending modes
