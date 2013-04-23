@@ -15,5 +15,27 @@ jraw (Draw with a "j" instead of a "d") is a JavaScript Library that uses the ca
 - Adjustments
   - Grayscale
   - Threshold
-- Add filters
-- Add blending modes
+- Filters
+- Blending
+  - Disolve
+  - Darken
+  - Multiply
+  - Color Burn
+  - Linear Burn
+  - Lighten
+  - Screen
+  - Color Dodge
+  - Linear Dodge
+  - Overlay
+  - Soft Light
+  - Hard Light
+  - Vivid Light
+  - Linear Light
+  - Pin Light
+  - Hard Mix
+  - Difference
+  - Exclusion
+  - Hue
+  - Saturation
+  - Color
+  - Luminosity
