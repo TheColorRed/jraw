@@ -13,7 +13,7 @@ You can attach inputs such as text fields or range sliders to an action like Bri
 - Saturation
 
 ##Things To Change (TODO)##
-- Needs to be able to create and adjust layers individually. jraw should be the main class which can initiate a layer class. The layer class will then allow for image manipulation just on that layer.
+- ~~Needs to be able to create and adjust layers individually. jraw should be the main class which can initiate a layer class. The layer class will then allow for image manipulation just on that layer.~~
 - Adjustments
   - ~~Brightness~~
   - ~~Contrast~~
