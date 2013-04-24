@@ -1,8 +1,8 @@
-function Brightness(j){
+function Brightness(layer){
     this.data;
-    this.jraw = j;
-    this.amount = 0;
     this.cwImage;
+    this.jraw = layer;
+    this.amount = 0;
     this.ready = function(){
         this.data = this.jraw.ctx.getImageData(0, 0, this.jraw.canvas.width, this.jraw.canvas.height);
         this.cwImage = this.jraw.ctx.getImageData(0, 0, this.jraw.canvas.width, this.jraw.canvas.height);

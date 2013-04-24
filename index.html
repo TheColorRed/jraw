@@ -62,11 +62,13 @@
         </div>
         <script>
             var j = new jraw("canvas");
-            j.setImage("/jraw/images/dog.jpg");
-            j.attachSlider("brightness", new Brightness(j));
+            var dog = j.newLayer("dog", "/jraw/images/dog.jpg");
+            /*j.attachSlider("brightness", new Brightness(j));
             j.attachSlider("contrast", new Contrast(j));
             j.attachSlider("saturation", new Saturation(j));
-            j.attachSlider("hue", new Hue(j));
+            j.attachSlider("hue", new Hue(j));*/
+    
+            j.paint();
 
             $("input[type=range]").change(function(){
                 var id = $(this).attr("id");
