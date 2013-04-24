@@ -1,13 +1,15 @@
-function Brightness(layer){
+function Brightness(){
     this.data;
     this.cwImage;
-    this.jraw = layer;
+    this.jraw;
     this.amount = 0;
     this.ready = function(){
         this.data = this.jraw.ctx.getImageData(0, 0, this.jraw.canvas.width, this.jraw.canvas.height);
         this.cwImage = this.jraw.ctx.getImageData(0, 0, this.jraw.canvas.width, this.jraw.canvas.height);
     };
-    
+    this.setLayer = function(layer){
+        this.jraw = layer;
+    };
     this.setValue = function(amount){
         this.amount = parseInt(amount);
     };

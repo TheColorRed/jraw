@@ -1,6 +1,6 @@
-function Saturation(j){
+function Saturation(){
     this.data;
-    this.jraw = j;
+    this.jraw;
     this.amount = 0;
     this.cwImage;
     this.ready = function(){
@@ -8,6 +8,10 @@ function Saturation(j){
         this.cwImage = this.jraw.ctx.getImageData(0, 0, this.jraw.canvas.width, this.jraw.canvas.height);
     };
 
+    this.setLayer = function(layer){
+        this.jraw = layer;
+    };
+    
     this.setValue = function(amount){
         this.amount = parseInt(amount);
     };
@@ -18,7 +22,7 @@ function Saturation(j){
             var green = this.cwImage.data[i + 1];
             var blue = this.cwImage.data[i + 2];
 
-            var hsv = this.jraw.RGBtoHSB(red, green, blue);
+            var hsv = Color.RGBtoHSB(red, green, blue);
             hsv[1] += this.amount * 0.01;
             if(hsv[1] > 1){
                 hsv[1] = 1;
@@ -27,7 +31,7 @@ function Saturation(j){
                 hsv[1] = 0;
             }
 
-            var newpixel = this.jraw.HSBtoRGB(hsv[0], hsv[1], hsv[2]);
+            var newpixel = Color.HSBtoRGB(hsv[0], hsv[1], hsv[2]);
 
             this.data.data[i] = newpixel[0];
             this.data.data[i+1] = newpixel[1];

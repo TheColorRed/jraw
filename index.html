@@ -35,7 +35,7 @@
         <div id="canvas-wrapper">
             <canvas id="canvas"></canvas>
         </div>
-        <div id="operations">
+        <!--<div id="operations">
             <div>
                 <div class="title">Brightness / Contrast</div>
                 <div>
@@ -59,15 +59,21 @@
                     <input type="button" value="Cancel" disabled="disabled" />
                 </div>
             </div>
-        </div>
+        </div>-->
         <script>
             var j = new jraw("canvas");
-            var dog = j.newLayer("dog", "/jraw/images/dog.jpg");
+            var dog = j.newLayer({
+                name: "dog",
+                url: "/jraw/images/dog.jpg",
+                run: new Saturation(),
+                value: 100
+            });
+            //dog.run(new Saturation(dog), 10);
             /*j.attachSlider("brightness", new Brightness(j));
-            j.attachSlider("contrast", new Contrast(j));
-            j.attachSlider("saturation", new Saturation(j));
-            j.attachSlider("hue", new Hue(j));*/
-    
+             j.attachSlider("contrast", new Contrast(j));
+             j.attachSlider("saturation", new Saturation(j));
+             j.attachSlider("hue", new Hue(j));*/
+
             j.paint();
 
             $("input[type=range]").change(function(){
